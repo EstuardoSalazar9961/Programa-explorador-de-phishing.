@@ -5,6 +5,9 @@
  */
 package programaphishing;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +53,46 @@ public class ProgramaPhishing {
         keywords.put("verificación de identidad", 3);
         keywords.put("oferta de trabajo desde casa", 3);
         keywords.put("su cuenta será cerrada", 3);
+        
+        
+         String fileName = "C:\\archivo.txt";
+
+        // Inicializar variables para el total de puntos y ocurrencias
+         int totalPoints = 0;
+
+       try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+           String line;
+
+           while ((line = reader.readLine()) != null) {
+
+               for (String keyword : keywords.keySet()) {
+
+                   int count = countOccurrences(line, keyword);
+
+                   if (count > 0) {
+
+                       int points = count * keywords.get(keyword);
+
+                       System.out.println(keyword + ": " + count + " ocurrencias (" + points + " puntos)");
+
+                       totalPoints += points;
+
+                   }
+
+               }
+
+           }
+
+       } catch (IOException e) {
+
+       }
     }
+    
+    private static int countOccurrences(String line, String word) {
+
+       return line.split(word, -1).length - 1;
+
+   }
     
 }
