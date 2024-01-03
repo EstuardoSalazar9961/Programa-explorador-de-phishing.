@@ -17,9 +17,6 @@ import java.util.Map;
  */
 public class ProgramaPhishing {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         Map<String, Integer> keywords = new HashMap<>();
@@ -55,7 +52,7 @@ public class ProgramaPhishing {
         keywords.put("su cuenta será cerrada", 3);
         
         
-         String fileName = "C:\\archivo.txt";
+         String fileName = "C:\\prueba\\archivo.txt";
 
         // Inicializar variables para el total de puntos y ocurrencias
          int totalPoints = 0;
@@ -84,6 +81,8 @@ public class ProgramaPhishing {
 
            }
 
+           System.out.println("Total de puntos acumulados: " + totalPoints);
+           
        } catch (IOException e) {
 
        }
